@@ -9,7 +9,7 @@ import java.util.UUID;
 @RestController
 @CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping
-public class Controller {
+public class SessionController {
     
     @PostMapping("/session")
     public String postMethodName() {
