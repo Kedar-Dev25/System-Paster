@@ -38,6 +38,9 @@ function App() {
 }, []);
         const handleOnClick = () => {
             axios.post("http://localhost:8080/save",data)
+                .then((response)=>{
+                    console.log(response);
+                })
             if (!text.trim()) {
                 alert("Please enter some text.");
                 return;
@@ -49,9 +52,7 @@ function App() {
         }
 
 
-console.log("SID:", sid);
-console.log("showQR:", showQR);
-console.log("QR URL:", qrUrl);
+
     
     return (
     <Routes>
