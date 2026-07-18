@@ -145,32 +145,76 @@ System-Paster/
 
 ## API Endpoints
 
-### Send Message
+### 1. Create Session
+
+Generates a unique session ID for each text transfer. This ID is used to create the QR code that receivers will scan.
+
+```http
+POST /session
 ```
-POST /api/send
+
+**Response**
+
+```json
+{
+  "sid": "363c9d43-8920-4a6d-8a2f-8cdb85b3574c"
+}
+```
+
+The session ID uniquely identifies each transfer and is encoded in the QR code.
+
+---
+
+### 2. Save Message
+
+Stores your text message with the generated session ID. The message is temporarily stored in the database.
+
+```http
+POST /save
 Content-Type: application/json
+```
 
-Request:
-{
-  "text": "Your text here"
-}
+**Request**
 
-Response:
+```json
 {
-  "sid": "abc123xyz",
-  "qrCode": "data:image/png;base64,...",
-  "expiresIn": 3600
+  "sid": "363c9d43-8920-4a6d-8a2f-8cdb85b3574c",
+  "message": "Hello from System Paster"
 }
 ```
 
-### Retrieve Message
-```
-GET /api/retrieve/:sid
+**Response**
 
-Response:
+```json
 {
-  "text": "Your text here",
-  "createdAt": "2024-01-15T10:30:00Z"
+  "message": "Saved successfully"
+}
+```
+
+---
+
+### 3. Retrieve Message
+
+Fetches the stored message using the session ID. Receiver devices use this endpoint to access the shared text instantly.
+
+```http
+POST /get-message
+Content-Type: application/json
+```
+
+**Request**
+
+```json
+{
+  "sid": "363c9d43-8920-4a6d-8a2f-8cdb85b3574c"
+}
+```
+
+**Response**
+
+```json
+{
+  "message": "Hello from System Paster"
 }
 ```
 
