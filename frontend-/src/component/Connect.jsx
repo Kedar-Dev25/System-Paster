@@ -1,16 +1,28 @@
 import { useParams } from "react-router-dom";
 import axios from "axios"
+import { useEffect } from "react";
+
+import { useState } from "react";
 
 function Connect() {
+    const [message, setMessage] = useState("");
+
     const { sid } = useParams();
-    console.log(sid);
-    axios.post("http://localhost:8080/get-message")
-        .then((response) => {
-            console.log(response.data)
-        })
+    useEffect(() => {
+    axios.post("http://localhost:8080/get-message", {
+        sid: sid
+    })
+    .then((response) => {
+        setMessage(response.data);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
+}, [sid]);
 
     return (
-        <h1>{sid}</h1>
+        <h1>{message}</h1>
     );
 }
 export default Connect;
