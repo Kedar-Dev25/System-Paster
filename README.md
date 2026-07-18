@@ -1,264 +1,205 @@
-# 🚀 System Paster
+# System Paster
 
 **Transfer text between devices instantly using QR codes.**
 
-> Stop wasting time searching through messages. Just paste 📋 → scan 📱 → done ✨
+Stop wasting time searching through messages. Paste your text, generate a QR code, scan it from another device, and you're done. No login. No account. No hassle.
 
 ---
 
-## 🤔 Why System Paster?
+## Why System Paster?
 
-### The Problem (Traditional Way) ❌
+### The Problem with Traditional Methods
 
-```
-📱 Open WhatsApp → 🔍 Search chat → 📝 Paste text → 📤 Send
-                                              ↓
-🆚 Multiple taps | Searching | App switching | SLOW 🐢
-                                              ↓
-💻 Another device → Open WhatsApp → 🔍 Find message → 📋 Copy
-```
+Most people use WhatsApp or similar apps to transfer small pieces of text between devices:
 
-**7 steps. 3-5 minutes. Annoying.**
+1. Open WhatsApp
+2. Search your own chat or message yourself
+3. Paste the text
+4. Send it
+5. Open WhatsApp on another device
+6. Find the message
+7. Copy the text
 
----
+**Result**: 7 steps, 3-5 minutes wasted on every transfer.
 
-### The Solution (System Paster) ✅
+### The System Paster Solution
 
-```
-💻 Open website → 📋 Paste text → ✋ Click send
-         ↓
-      🤖 Magic ✨
-         ↓
-📱 Scan QR → 🎯 Get text → 📋 Copy
-```
+1. Open the website
+2. Paste your text
+3. Click send
+4. Scan the QR code from another device
+5. Copy your text instantly
 
-**4 steps. 5 seconds. Done.**
+**That's it. No login. No account. No searching.**
 
----
+### Quick Comparison
 
-## 📊 Quick Comparison
-
-| 🎯 Feature | 💬 WhatsApp | 🚀 System Paster |
-|:-----------|:--------:|:----------------:|
-| **⏱️ Time Taken** | 3-5 min | 5-10 sec |
-| **📚 Steps** | 7 | 4 |
-| **🔐 Login Required** | ✅ Yes | ❌ No |
-| **🔍 Search Time** | 1-2 min | ⚡ Instant |
-| **🌐 Cross-Platform** | ✅ Yes | ✅ Yes |
-| **🔒 Privacy** | Server-stored | Session-based |
-| **📱 Mobile Friendly** | ✅ Yes | ✅ Yes |
+| Feature | Traditional Method | System Paster |
+|---------|-------------------|---------------|
+| Steps | 7 | 5 |
+| Time Required | 3-5 minutes | 10-30 seconds |
+| Login Needed | Yes | No |
+| Device Support | Limited | All browsers |
+| Searching Required | Yes | No |
+| Privacy | Server-stored | Temporary session |
 
 ---
 
-## ✨ Features at a Glance
+## Key Features
 
-<table>
-<tr>
-<td width="50%">
-
-### 🔗 QR-Based Transfer
-Generate unique QR for every transfer
-
-### 🔓 Zero Login
-No signup, no password, no headache
-
-### ⚡ Lightning Fast
-5 seconds to share anything
-
-### 🆔 Unique Sessions
-Each transfer gets its own ID
-
-</td>
-<td width="50%">
-
-### 🎯 One-Click Copy
-Instant clipboard access
-
-### 🌍 Any Device
-Desktop, tablet, mobile
-
-### 💼 Simple UI
-No complexity, just works
-
-### 🔐 Secure
-Temporary storage, auto-delete
-
-</td>
-</tr>
-</table>
+🔗 **QR-Based Transfers** - Unique QR code generated for each transfer  
+🔓 **No Authentication** - No signup, no login, no passwords  
+⚡ **Instant Sharing** - Transfer text in seconds between any devices  
+🎯 **Session-Based** - Each transfer gets a unique session ID  
+📱 **Cross-Platform** - Works on desktop, tablet, and mobile browsers  
+🔒 **Secure Sessions** - Temporary storage with automatic expiration  
 
 ---
 
-## 🔄 How It Works (Visual Flow)
+## How It Works
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                       🚀 SENDER SIDE                            │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  📝 User enters text in React app                               │
-│         ↓                                                        │
-│  🎲 Generate Unique Session ID (SID)                            │
-│         ↓                                                        │
-│  📮 Send to Spring Boot Backend (/api/send)                     │
-│         ↓                                                        │
-│  💾 Store in MySQL Database                                     │
-│         ↓                                                        │
-│  📲 Generate QR Code (encodes SID)                              │
-│         ↓                                                        │
-│  🖼️  Display QR to user                                         │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              │ 📸 QR Code Scanned
-                              ↓
-┌─────────────────────────────────────────────────────────────────┐
-│                      📱 RECEIVER SIDE                            │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                  │
-│  🔗 React Router extracts SID from URL                          │
-│         ↓                                                        │
-│  🔄 Request Backend (/api/retrieve/:sid)                        │
-│         ↓                                                        │
-│  📥 Spring Boot fetches from Database                           │
-│         ↓                                                        │
-│  ✅ Text displayed on screen                                    │
-│         ↓                                                        │
-│  📋 One-click copy to clipboard                                 │
-│         ↓                                                        │
-│  🎉 Done!                                                       │
-│                                                                  │
-└─────────────────────────────────────────────────────────────────┘
+User Device 1
+    ↓
+Paste text in web app
+    ↓
+Generate unique Session ID
+    ↓
+Backend stores message temporarily in database
+    ↓
+QR code generated and displayed
+    ↓
+User scans QR from Device 2
+    ↓
+Backend retrieves message using Session ID
+    ↓
+Text displayed instantly on Device 2
+    ↓
+Copy to clipboard ✓
 ```
+
+### Architecture Overview
+
+- **Frontend**: React app handles user input and QR code display
+- **Backend**: Spring Boot REST API manages message storage and retrieval
+- **Database**: MySQL stores messages temporarily with expiration
+- **QR Code**: Encodes the session ID for easy scanning between devices
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│                    🎨 FRONTEND (React)                       │
-├──────────────────────────────────────────────────────────────┤
-│  ⚛️  React.js        →  Component-based UI                   │
-│  ⚡ Vite            →  Lightning-fast dev server             │
-│  🌐 Axios           →  HTTP requests to backend              │
-│  🛣️  React Router    →  Client-side routing                  │
-│  🎨 Tailwind CSS    →  Modern styling                        │
-└──────────────────────────────────────────────────────────────┘
+**Frontend**
+- React.js - User interface
+- Vite - Build tool
+- Axios - API client
+- React Router - URL-based session retrieval
 
-┌──────────────────────────────────────────────────────────────┐
-│                   🔧 BACKEND (Spring Boot)                   │
-├──────────────────────────────────────────────────────────────┤
-│  ☕ Java            →  Core language                         │
-│  🌱 Spring Boot     →  REST API framework                    │
-│  🗄️  Spring Data JPA →  Database ORM                         │
-│  📡 REST APIs       →  HTTP endpoints                        │
-└──────────────────────────────────────────────────────────────┘
+**Backend**
+- Java with Spring Boot - REST API
+- Spring Data JPA - Database operations
+- MySQL - Message storage
 
-┌──────────────────────────────────────────────────────────────┐
-│                  💾 DATABASE & TOOLS                         │
-├──────────────────────────────────────────────────────────────┤
-│  🗄️  MySQL          →  Relational database                  │
-│  🐙 Git/GitHub      →  Version control                       │
-│  💻 VS Code         →  Code editor                           │
-│  🧪 Postman         →  API testing                           │
-└──────────────────────────────────────────────────────────────┘
-```
+**Tools**
+- Git & GitHub - Version control
+- VS Code - Development environment
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 System-Paster/
-│
-├── 🎨 frontend/
+├── frontend/
 │   ├── src/
-│   │   ├── 🧩 components/
+│   │   ├── components/
 │   │   │   ├── TextInput.jsx
 │   │   │   ├── QRDisplay.jsx
 │   │   │   └── MessageReceiver.jsx
-│   │   ├── 📄 pages/
+│   │   ├── pages/
 │   │   │   ├── SendPage.jsx
 │   │   │   └── ReceivePage.jsx
-│   │   ├── 🔌 services/
+│   │   ├── services/
 │   │   │   └── api.js
-│   │   ├── App.jsx
-│   │   └── main.jsx
-│   ├── package.json
-│   └── vite.config.js
+│   │   └── App.jsx
+│   └── package.json
 │
-├── 🔧 backend/
+├── backend/
 │   ├── src/main/java/com/systempaster/
-│   │   ├── 🎛️  controller/
+│   │   ├── controller/
 │   │   │   └── MessageController.java
-│   │   ├── ⚙️  service/
+│   │   ├── service/
 │   │   │   └── MessageService.java
-│   │   ├── 🗄️  repository/
+│   │   ├── repository/
 │   │   │   └── MessageRepository.java
-│   │   ├── 📦 model/
+│   │   ├── model/
 │   │   │   └── Message.java
-│   │   └── 🚀 SystemPasterApplication.java
-│   ├── 📝 pom.xml
-│   └── ⚙️  application.properties
+│   │   └── SystemPasterApplication.java
+│   └── pom.xml
 │
-└── 📚 docs/
+└── docs/
     └── API_DOCUMENTATION.md
 ```
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
-### 📤 Send Message
-```http
+### Send Message
+```
 POST /api/send
 Content-Type: application/json
 
+Request:
 {
-  "text": "Your awesome text here"
+  "text": "Your text here"
 }
 
-✅ Response:
+Response:
 {
-  "sid": "xyz-abc-123",
+  "sid": "abc123xyz",
   "qrCode": "data:image/png;base64,...",
   "expiresIn": 3600
 }
 ```
 
-### 📥 Retrieve Message
-```http
+### Retrieve Message
+```
 GET /api/retrieve/:sid
 
-✅ Response:
+Response:
 {
-  "text": "Your awesome text here",
+  "text": "Your text here",
   "createdAt": "2024-01-15T10:30:00Z"
 }
 ```
 
 ---
 
-## 🚀 Getting Started (3 Easy Steps)
+## Getting Started
 
-### Step 1️⃣ Clone & Setup Frontend
+### Prerequisites
+- Node.js (v16+)
+- Java JDK (v11+)
+- MySQL (v8+)
+
+### Frontend Setup
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-🎉 Frontend runs on `http://localhost:5173`
+Runs on `http://localhost:5173`
 
-### Step 2️⃣ Setup Backend
+### Backend Setup
 ```bash
 cd backend
 mvn clean install
 mvn spring-boot:run
 ```
-🎉 Backend runs on `http://localhost:8080`
+Runs on `http://localhost:8080`
 
-### Step 3️⃣ Setup Database
+### Database Setup
 ```sql
 CREATE DATABASE system_paster;
 
@@ -273,142 +214,56 @@ CREATE TABLE messages (
 CREATE INDEX idx_session_id ON messages(session_id);
 ```
 
-✅ **Done!** Open `http://localhost:5173` and start sharing! 🎉
+---
+
+## Use Cases
+
+- Share code snippets between devices
+- Transfer phone numbers quickly
+- Pass URLs instantly
+- Share temporary notes
+- Transfer API keys securely
 
 ---
 
-## 🎯 Use Cases
+## Future Enhancements
 
-```
-📋 → Share code snippets quickly
-📞 → Pass phone numbers between devices
-🔗 → Instant URL sharing
-✍️ → Quick notes transfer
-🎟️ → Share promo codes/tickets
-📍 → Send addresses/locations
-🔑 → Pass API keys securely
-```
+- Real-time WebSocket transfers
+- File sharing support
+- Image sharing capability
+- Custom message expiry settings
+- End-to-end encryption option
+- Progressive Web App (PWA) support
+- Mobile app optimization
 
 ---
 
-## 🚀 Future Roadmap
+## Contributing
 
-<table>
-<tr>
-<td>
+Contributions are welcome! Please follow these steps:
 
-### Phase 1 (Coming Soon) 🔜
-- 🔄 WebSocket real-time transfer
-- 📁 File sharing support
-- 🖼️ Image upload & share
-
-</td>
-<td>
-
-### Phase 2 (Future) 📅
-- ⏰ Message expiry settings
-- 🔒 End-to-end encryption
-- 📲 PWA support
-
-</td>
-<td>
-
-### Phase 3 (Wishlist) 💭
-- 🌍 Multi-language support
-- 📊 Analytics dashboard
-- 🎨 Custom themes
-
-</td>
-</tr>
-</table>
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes (`git commit -m 'Add your feature'`)
+4. Push to the branch (`git push origin feature/your-feature`)
+5. Open a Pull Request
 
 ---
 
-## 🤝 Contributing
+## About This Project
 
-Love System Paster? Help us make it even better! 💪
+System Paster was created to solve a real everyday problem: transferring small pieces of text between devices without unnecessary steps or accounts. It demonstrates full-stack web development with a clean, functional interface and a scalable backend architecture.
 
-```bash
-# 1. Fork the repo
-# 2. Create your feature branch
-git checkout -b feature/amazing-feature
-
-# 3. Make changes & commit
-git commit -m '✨ Add amazing feature'
-
-# 4. Push to branch
-git push origin feature/amazing-feature
-
-# 5. Open a Pull Request
-```
+Whether you're sharing a code snippet, a phone number, or a quick note, System Paster removes friction from your workflow.
 
 ---
 
-## 📞 Need Help?
+## Support
 
-- 🐛 **Found a bug?** [Create an issue](../../issues)
-- 💡 **Have an idea?** [Suggest a feature](../../discussions)
-- 📧 **Want to chat?** Open a discussion!
+Found a bug or have a suggestion? [Create an issue](../../issues) on GitHub.
 
 ---
 
-## 📄 License
+## License
 
-This project is open source under the **MIT License** 📜
-
----
-
-## 🎬 Demo Workflow
-
-```
-┌─────────────────────────────────────────────────────┐
-│  Step 1: Paste           Step 2: Send              │
-│  ┌───────────────┐      ┌─────────────┐            │
-│  │ Ctrl+V paste  │  →   │ Click Send  │            │
-│  └───────────────┘      └─────────────┘            │
-│           ↓                      ↓                  │
-│  Step 3: QR Generated   Step 4: Scan on Phone    │
-│  ┌───────────────┐      ┌─────────────┐            │
-│  │ ┌─────────┐   │      │ 📱 QR Scan  │            │
-│  │ │███ QR ██│   │      │ Code        │            │
-│  │ │██ CODE██│   │      └─────────────┘            │
-│  │ └─────────┘   │             ↓                   │
-│  └───────────────┘   Step 5: Text Appears        │
-│                      ┌─────────────┐              │
-│                      │ "Your text" │              │
-│                      └─────────────┘              │
-│                             ↓                     │
-│                      Step 6: Copy ✅             │
-│                           DONE! 🎉              │
-└─────────────────────────────────────────────────────┘
-```
-
----
-
-## 👨‍💻 Why I Built This
-
-System Paster is more than just a tool—it's a solution to a real everyday problem. Built as a **full-stack portfolio project** to showcase:
-
-✅ **Full-Stack Development** – Frontend to backend to database  
-✅ **REST API Design** – Clean, scalable endpoints  
-✅ **Real-World Problem Solving** – Features people actually need  
-✅ **Clean Architecture** – Modular, maintainable code  
-✅ **DevOps Ready** – Production-deployment friendly  
-
-Perfect for learning or as a portfolio piece! 🚀
-
----
-
-## 🌟 Show Your Support
-
-If you found System Paster useful, please ⭐ star the repo! It helps other developers find it too!
-
----
-
-<div align="center">
-
-### Made with ❤️ for developers who value their time
-
-**[GitHub](https://github.com/Kedar-Dev25) • [Portfolio](#) • [Twitter](#)**
-
-</div>
+This project is open source under the MIT License.
