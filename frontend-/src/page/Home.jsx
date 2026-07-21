@@ -1,81 +1,79 @@
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import QRCode from "react-qr-code";
-import { Routes, Route } from "react-router-dom";
 
 function Home() {
 
     const [text, setText] = useState("");
-    const [sid,setSid] = useState("");
-    const [showQR,setShowQR] = useState(false);
-
-    const hasRequested = useRef(false);
-
-    const qrUrl = `http://localhost:5173/connect/${sid}`;
-    const data = {
-        sid : sid,
-        message : text,
-    }
+    const [showQR, setShowQR] = useState(false);
+    const [qrUrl, setQrUrl] = useState("");
 
     useEffect(() => {
+    console.log(qrUrl);
+}, [qrUrl]);
 
-    if (hasRequested.current) {
-        return;
-    }
+    const handleOnClick = () => {
 
-    hasRequested.current = true;
-
-    axios.post("http://localhost:8080/session")
-        .then((response) => {
-            setSid(response.data);
-            console.log(response.data);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-
-}, []);
-        const handleOnClick = () => {
-            axios.post("http://localhost:8080/save",data)
-                .then((response)=>{
-                    console.log(response);
-                })
-            if (!text.trim()) {
-                alert("Please enter some text.");
-                return;
-            }
-
-            console.log(text);
-
-            setShowQR(true);
+        if (!text.trim()) {
+            alert("Please enter some text.");
+            return;
         }
 
+        // Small text -> No backend required
+        if (text.length <= 500) {
 
+            setQrUrl(`http://localhost:5173/${encodeURIComponent(text)}`);
+            setShowQR(true);
+            return;
+        }
 
-    
+        // Large text -> Save on backend
+        axios.post("http://localhost:8080/session")
+            .then((response) => {
+
+                const sid = response.data;
+
+                const data = {
+                    sid: sid,
+                    message: text
+                };
+
+                return axios.post("http://localhost:8080/save", data)
+                    .then(() => {
+
+                        setQrUrl(`http://localhost:5173/connect/${sid}`);
+                        setShowQR(true);
+
+                    });
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    };
+
     return (
- 
-                <>
-                    <textarea
-                        value={text}
-                        onChange={(e) => setText(e.target.value)}
-                    />
+        <>
+            <textarea
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+            />
 
-                    <br />
+            <br />
 
-                    <button onClick={handleOnClick}>
-                        Send
-                    </button>
+            <button onClick={handleOnClick}>
+                Send
+            </button>
 
-                    {showQR && sid && (
-                        <QRCode
-                            value={qrUrl}
-                            size={220}
-                        />
-                    )}
-                </>
-               
-);
+            {showQR && (
+                <QRCode
+                    value={qrUrl}
+                    size={220}
+                />
+            )}
+        </>
+    );
 }
 
 export default Home;
