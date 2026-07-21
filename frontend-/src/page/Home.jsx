@@ -22,13 +22,13 @@ function Home() {
         // Small text -> No backend required
         if (text.length <= 500) {
 
-            setQrUrl(`http://localhost:5173/${encodeURIComponent(text)}`);
+            setQrUrl(`system-paster.vercel.app/${encodeURIComponent(text)}`);
             setShowQR(true);
             return;
         }
 
         // Large text -> Save on backend
-        axios.post("http://localhost:8080/session")
+        axios.post("https://system-paster.onrender.com/session")
             .then((response) => {
 
                 const sid = response.data;
@@ -38,10 +38,10 @@ function Home() {
                     message: text
                 };
 
-                return axios.post("http://localhost:8080/save", data)
+                return axios.post("https://system-paster.onrender.com/save", data)
                     .then(() => {
 
-                        setQrUrl(`http://localhost:5173/connect/${sid}`);
+                        setQrUrl(`system-paster.vercel.app/connect/${sid}`);
                         setShowQR(true);
 
                     });

@@ -9,7 +9,7 @@ function Connect() {
 
     const { sid } = useParams();
     useEffect(() => {
-    axios.post("http://localhost:8080/get-message", {
+    axios.post("https://system-paster.onrender.com/get-message", {
         sid: sid
     })
     .then((response) => {
