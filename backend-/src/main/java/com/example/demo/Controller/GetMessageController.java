@@ -11,7 +11,7 @@ import com.example.demo.Repository.MessageRepository;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://system-paster.vercel.app")
 public class GetMessageController {
 
     @Autowired

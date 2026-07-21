@@ -6,11 +6,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Repository.MessageRepository;
 import com.example.demo.Model.Message;
+import com.example.demo.Repository.MessageRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://system-paster.vercel.app")
+
 public class SaveController {
     @Autowired
     private MessageRepository repo;
