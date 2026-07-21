@@ -1,14 +1,17 @@
 package com.example.demo.Model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 
 @Entity
 public class Message {
 
     @Id
     private String sid;
-
+    @Lob
+    @Column(columnDefinition = "TEXT")
     private String message;
 
     public Message() {
