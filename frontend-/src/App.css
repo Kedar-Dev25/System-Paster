@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Main Container: Horizontally wide */
+.container {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 750px;
+  box-sizing: border-box;
+  border: 1px solid #e2e8f0;
+}
+
+/* Textarea: Real wide paste-tool feel */
+.text-area {
+  width: 100%;
+  height: 180px;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.text-area:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Send Button: Bottom-left aligned */
+.send-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  font-size: 14px;
+  fontWeight: 600;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 14px;
+  align-self: flex-start;
+  transition: background-color 0.2s;
+}
+
+.send-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* QR Container: Cleanly positioned below without shifting layout */
+.qr-container {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.qr-code {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import QRCode from "react-qr-code";
+import "../App.css";
 
 function Home() {
 
@@ -53,26 +54,35 @@ function Home() {
 
     };
 
-    return (
-        <>
-            <textarea
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            />
+        return (
+    <div className="container">
 
-            <br />
+        <textarea
+            className="text-area"
+            value={text}
+            disabled={showQR}
+            onChange={(e) => setText(e.target.value)}
+        />
 
-            <button onClick={handleOnClick}>
-                Send
-            </button>
+        <button
+            className="send-btn"
+            onClick={handleOnClick}
+        >
+            Send
+        </button>
 
-            {showQR && (
+        {showQR && (
+            <div className="qr-container">
                 <QRCode
+                    className="qr-code"
                     value={qrUrl}
                     size={220}
                 />
-            )}
-        </>
+            </div>
+        )}
+
+    </div>
+
     );
 }
 

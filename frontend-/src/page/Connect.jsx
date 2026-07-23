@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios"
 import { useEffect } from "react";
-
+import { Copy, Check } from "lucide-react";
 import { useState } from "react";
 
 function Connect() {
@@ -10,12 +10,16 @@ function Connect() {
     const [copied, setCopied] = useState(false);
 
 const handleCopy = async () => {
-    await navigator.clipboard.writeText(message);
-    setCopied(true);
+    try {
+        await navigator.clipboard.writeText(message);
+        setCopied(true);
 
-    setTimeout(() => {
-        setCopied(false);
-    }, 1200);
+        setTimeout(() => {
+            setCopied(false);
+        }, 1200);
+    } catch (err) {
+        console.error("Copy failed:", err);
+    }
 };
 
 
