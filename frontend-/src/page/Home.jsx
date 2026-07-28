@@ -55,6 +55,14 @@ function Home() {
     };
 
         return (
+            <>
+            <h1>System Paster</h1>
+
+<p>
+Transfer copied text instantly between your laptop and mobile using a QR code.
+No login. No WhatsApp. No app installation.
+Paste your text below and scan the generated QR code from another device.
+</p>
     <div className="container">
 
         <textarea
@@ -82,7 +90,7 @@ function Home() {
         )}
 
     </div>
-
+        </>
     );
 }
 
