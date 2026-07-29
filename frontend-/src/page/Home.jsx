@@ -19,7 +19,7 @@ function Home() {
         }
 
         if (text.length <= 500) {
-            setQrUrl(`http://localhost:5173/${encodeURIComponent(text)}`);
+            setQrUrl(`system-paster.vercel.app/${encodeURIComponent(text)}`);
             setShowQR(true);
             return;
         }
