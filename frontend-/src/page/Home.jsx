@@ -85,7 +85,10 @@ function Home() {
         />
     </svg>
 </button>
-            </main>
+        </main>
+    <footer className="footer">
+        <p>🔐 No Login Required • ⚡ Instant Sharing • 📱 Cross Device</p>
+    </footer>
 
             {showQR && (
                 <div className="modal-backdrop">
