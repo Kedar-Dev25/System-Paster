@@ -12,6 +12,22 @@ function ShowText() {
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
+    const handleShare = async () => {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                text: decodedText,
+            });
+        } catch (err) {
+            console.log("Share cancelled");
+        }
+    } else {
+        window.open(
+            `https://wa.me/?text=${encodeURIComponent(decodedText)}`,
+            "_blank"
+        );
+    }
+};
 
     return (
         <div className="page-wrapper">
@@ -29,10 +45,15 @@ function ShowText() {
                         </svg>
                         <span>Transferred Successfully</span>
                     </div>
+<div className="action-buttons">
+    <button className="copy-btn" onClick={handleCopy}>
+        {copied ? "Copied!" : "Copy"}
+    </button>
 
-                    <button className="copy-btn" onClick={handleCopy}>
-                        {copied ? "Copied!" : "Copy"}
-                    </button>
+    <button className="share-btn" onClick={handleShare}>
+        Share
+    </button>
+</div>
                 </div>
                 
                 <div className="content-box">
