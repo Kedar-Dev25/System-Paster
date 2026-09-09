@@ -2,43 +2,135 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-
-<link rel="icon" type="image/png" href="/favicon.png" />
-
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>System Paster - Instantly Transfer Text Between Devices</title>
+  <!-- Primary SEO Title (Keyword Targeted) -->
+  <title>Transfer Text from Laptop to Phone Online | System Paster</title>
 
   <meta
     name="description"
-    content="System Paster lets you instantly transfer copied text between your laptop and mobile using a QR code. No WhatsApp. No login."
+    content="Quickly transfer copied text, links, and code snippets from laptop to phone, phone to laptop, or between mobile devices using QR code without login or apps."
   />
-  
-  <meta
-    name="keywords"
-    content="System Paster, text transfer, copy paste between devices, QR text sharing, clipboard sharing"
+  <meta 
+    name="keywords" 
+    content="transfer text laptop to phone, copy text from PC to mobile, share text between devices, QR text transfer online, system paster" 
   />
+
   <link rel="canonical" href="https://system-paster.vercel.app/" />
-
-<meta property="og:image" content="https://system-paster.vercel.app/favicon.png" />
-
-<meta property="og:site_name" content="System Paster" />
+  <meta name="robots" content="index, follow" />
   <meta name="author" content="Kedarnath Mandal" />
 
-  <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="System Paster" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Transfer Text from Laptop to Phone Online | System Paster" />
   <meta
     property="og:description"
-    content="Transfer text instantly between your laptop and phone."
+    content="Transfer text between your laptop, phone, and other devices instantly using a QR code. Free, browser-based, and no login required."
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://system-paster.vercel.app/" />
-  <meta name="google-site-verification" content="DjdFBIc56A6EII5qwBLpL3cUQMwE4Yhg_OMjugGACKw" />
+  <meta property="og:image" content="https://system-paster.vercel.app/favicon.png" />
+  <meta property="og:site_name" content="System Paster" />
+
+  <!-- Twitter Card Data -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Transfer Text from Laptop to Phone Online | System Paster" />
+  <meta name="twitter:description" content="Directly share links, code snippets, and short text between PC and mobile using QR codes." />
+  <meta name="twitter:image" content="https://system-paster.vercel.app/favicon.png" />
+
+  <meta
+    name="google-site-verification"
+    content="DjdFBIc56A6EII5qwBLpL3cUQMwE4Yhg_OMjugGACKw"
+  />
+
+  <!-- Structured Data: WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "System Paster",
+    "url": "https://system-paster.vercel.app/",
+    "description": "Transfer short text between devices using a QR code without requiring a login.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser",
+    "author": {
+      "@type": "Person",
+      "name": "Kedarnath Mandal"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ Schema (Rich Snippet Eligible) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How can I transfer text from my laptop to my phone?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paste your text into System Paster on your laptop, click 'Generate QR Code', and scan it using your phone's camera. The text will open on your phone screen ready to copy."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I transfer text from my phone to my laptop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open System Paster on your phone, paste the text, and generate a QR code. Scan the code using your laptop’s camera or scanner to retrieve the text instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I transfer text between two phones?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Paste the text on the sender phone, generate the QR code, and scan it with the receiving phone's camera to share text instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I transfer text without logging in?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. System Paster requires no user registration, email, or account creation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need an app to transfer text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No app installation is needed. System Paster works entirely inside any browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much text can I transfer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can transfer up to 500 characters per QR code, ideal for links, wifi passwords, notes, and code snippets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does System Paster transfer text?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It encodes your text into a URL matrix displayed as a QR code. Scanning reads the encoded data instantly without relying on account pairings."
+        }
+      }
+    ]
+  }
+  </script>
+
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
